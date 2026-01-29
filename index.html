@@ -2,36 +2,103 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>My Creative Embedded Systems Portfolio</title>
+  <title>Victoria's Creative Embedded Systems Portfolio</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; }
-    .item { max-width: 600px; }
-    img { width: 100%; border-radius: 8px; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdf6f0;
+      margin: 40px;
+      color: #4a3c2f;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      font-family: 'Brush Script MT', cursive;
+      color: #d16d7c;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 30px;
+      max-width: 1000px;
+      margin: auto;
+      background: #fff8f2;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    }
+
+    img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .description {
+      padding: 10px;
+      background-color: #ffeef0;
+      border-radius: 12px;
+      border: 2px dashed #d16d7c;
+    }
+
+    .description h2 {
+      font-family: 'Segoe UI', sans-serif;
+      color: #b85c6e;
+    }
+
+    .description p {
+      line-height: 1.6;
+    }
+
+    .bottom p {
+      text-align: center;
+      font-style: italic;
+      margin-top: 10px;
+      color: #7a5c4f;
+    }
   </style>
 </head>
+
 <body>
 
   <h1>Victoria's Creative Embedded Systems Portfolio</h1>
 
-  <div class="item">
-    <h2>Shape Shifter</h2>
-    <img src="IMG_4491.jpg" alt="Project image">
-    <p>
-      Sculpture: protoboard, 14 pin header, brass rod <br>
-      My second try soldering. I learned about the correct attachment points and how little solder 
-      is actually necessary. First, I soldered the pins, using a breadbord to stabilize the materials. 
-      Then I bent the brass rod and attached it to the protoboard in two places. The brass rod represents 
-      a path with a seemingly steady road that turns into a winding journey. It's also fun to spin the 
-      sculpture and look at it from different angles to discover different shapes.
-    </p>
-    <img src="Solder_Beads.jpg" alt="Project image">
-    <p>
-      Solder Beads
-    </p>
-    <img src="Alternate_Angle.jpg" alt="Project image">
-    <p>
-      Alternate Angle
-    </p>
+  <div class="grid">
+
+    <!-- Top-left: Hero image -->
+    <div class="hero">
+      <img src="IMG_4491.jpg" alt="Shape Shifter hero image">
+    </div>
+
+    <!-- Top-right: Text description -->
+    <div class="description">
+      <h2>Shape Shifter</h2>
+      <p>
+        <strong>Materials:</strong> protoboard, 14 pin header, brass rod<br><br>
+        My second try soldering. I learned about the correct attachment points and how little solder 
+        is actually necessary. First, I soldered the pins, using a breadboard to stabilize the materials. 
+        Then I bent the brass rod and attached it to the protoboard in two places. The brass rod represents 
+        a path with a seemingly steady road that turns into a winding journey. It's also fun to spin the 
+        sculpture and look at it from different angles to discover different shapes.
+      </p>
+    </div>
+
+    <!-- Bottom-left: Solder beads -->
+    <div class="bottom">
+      <img src="Solder_Beads.jpg" alt="Solder beads close-up">
+      <p>Solder Beads</p>
+    </div>
+
+    <!-- Bottom-right: Alternate angle -->
+    <div class="bottom">
+      <img src="Alternate_Angle.jpg" alt="Alternate angle view">
+      <p>Alternate Angle</p>
+    </div>
+
   </div>
 
 </body>
