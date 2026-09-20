@@ -184,74 +184,89 @@
       transition-delay: 0.48s;
     }
 
-    /* =========================
+   /* =========================
    FLOWER DOTS ON TITLE
    ========================= */
     
-    /* Wrap each i */
     .flower-i {
       position: relative;
-      display: inline;
+      display: inline-block;
       line-height: inherit;
     }
     
-    /* The i itself */
-    .flower-i > i,
-    .flower-i > span.i-letter {
-      position: relative;
-      z-index: 2;
-    }
-    
-    /* Mini version of the squiggle flower */
+    /* Flower that appears over the existing i-dot */
     .mini-flower {
       position: absolute;
     
+      /* Position centered directly on the i-dot */
       left: 50%;
-      top: -0.62em; /* sits exactly where the dot is */
+      top: -0.56em;
     
-      width: 20px;   /* scaled-down version of your 30px flower */
+      /* Same proportions as the underline flower */
+      width: 20px;
       height: 20px;
     
       transform: translateX(-50%) scale(0);
+      transform-origin: center center;
+    
       opacity: 0;
       pointer-events: none;
     
       transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.2s ease;
+        opacity 0.2s ease,
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
     }
     
-    /* Bloom animation */
+    /* Only the i being hovered blooms */
     .flower-i:hover .mini-flower {
       opacity: 1;
       transform: translateX(-50%) scale(1);
     }
     
-    /* Petals — EXACT match to squiggle flower, scaled down */
+    /* Same four-petal shape as the underline flowers */
     .mini-flower .petal {
       position: absolute;
+    
       width: 8px;
       height: 8px;
+    
       background: #9B8FB5;
       border-radius: 50%;
+    
       left: 6px;
       top: 6px;
     }
     
-    .mini-flower .petal:nth-child(1) { transform: translateY(-6px); }
-    .mini-flower .petal:nth-child(2) { transform: translateX(6px); }
-    .mini-flower .petal:nth-child(3) { transform: translateY(6px); }
-    .mini-flower .petal:nth-child(4) { transform: translateX(-6px); }
+    .mini-flower .petal:nth-child(1) {
+      transform: translateY(-6px);
+    }
     
-    /* Center — EXACT match, scaled down */
+    .mini-flower .petal:nth-child(2) {
+      transform: translateX(6px);
+    }
+    
+    .mini-flower .petal:nth-child(3) {
+      transform: translateY(6px);
+    }
+    
+    .mini-flower .petal:nth-child(4) {
+      transform: translateX(-6px);
+    }
+    
+    /* Same yellow center as the underline flowers */
     .mini-flower .flower-center {
       position: absolute;
+    
       width: 6px;
       height: 6px;
-      background: #E6D58A;
-      border-radius: 50%;
+    
       left: 7px;
       top: 7px;
+    
+      background: #E6D58A;
+      border-radius: 50%;
+    
+      z-index: 2;
     }
 
 
@@ -289,52 +304,39 @@
   <div class="content">
 
     <h1>
-      V<span class="flower-i">i
-        <span class="mini-flower">
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="flower-center"></span>
-        </span>
-      </span>
-      ctor
-      <span class="flower-i">i
-        <span class="mini-flower">
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="flower-center"></span>
-        </span>
-      </span>
-      a’s
-      Creat<span class="flower-i">i
-        <span class="mini-flower">
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="flower-center"></span>
-        </span>
-      </span>ve
-      Embedded Systems Port<span class="flower-i">i
-        <span class="mini-flower">
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="flower-center"></span>
-        </span>
-      </span>fol<span class="flower-i">i
-        <span class="mini-flower">
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="flower-center"></span>
-        </span>
-      </span>o
+      V<span class="flower-i">i<span class="mini-flower">
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="flower-center"></span>
+      </span></span>ctor<span class="flower-i">i<span class="mini-flower">
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="flower-center"></span>
+      </span></span>a’s
+      Creat<span class="flower-i">i<span class="mini-flower">
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="flower-center"></span>
+      </span></span>ve
+      Embedded Systems Port<span class="flower-i">i<span class="mini-flower">
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="flower-center"></span>
+      </span></span>fol<span class="flower-i">i<span class="mini-flower">
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="flower-center"></span>
+      </span></span>o
     </h1>
 
    
