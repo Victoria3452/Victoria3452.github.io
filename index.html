@@ -93,17 +93,18 @@
       stroke-dashoffset: 0;
     }
 
-    /* FLOWER — now perfectly aligned */
+    /* FLOWER — aligned to natural path end */
     .flower {
       position: absolute;
-      right: 0;
-      top: -10px;
+
+      right: -4px;   /* aligns with end of natural path */
+      top: -18px;    /* matches stem tip */
 
       width: 30px;
       height: 30px;
 
       opacity: 0;
-      transform: translate(0, 0) scale(0);
+      transform: scale(0);
       transform-origin: center center;
 
       transition:
@@ -145,10 +146,11 @@
       z-index: 2;
     }
 
-    /* LEAF — aligned to new curve */
+    /* LEAF — aligned to natural curve */
     .leaf {
       position: absolute;
-      right: 25px;
+
+      right: 30px;
       top: 10px;
 
       width: 18px;
@@ -211,7 +213,7 @@
         <h2>About Me</h2>
 
         <div class="wave">
-          <svg viewBox="0 0 180 55" preserveAspectRatio="none">
+          <svg viewBox="0 0 250 70" preserveAspectRatio="none">
 
             <path
               class="wave-line"
@@ -224,14 +226,16 @@
               "
             />
 
-            <!-- Smooth extension ending at x=180 -->
+            <!-- ⭐ Natural smooth extension you liked -->
             <path
               class="wave-extension"
               pathLength="100"
               d="
                 M 150 17
                 C 162 7, 174 7, 186 17
-                S 198 27, 180 17
+                S 210 27, 222 17
+                C 230 12, 234 6, 234 0
+                C 234 -6, 234 -12, 234 -18
               "
             />
 
@@ -262,7 +266,7 @@
         <h2>Projects</h2>
 
         <div class="wave">
-          <svg viewBox="0 0 180 55" preserveAspectRatio="none">
+          <svg viewBox="0 0 250 70" preserveAspectRatio="none">
 
             <path
               class="wave-line"
@@ -281,7 +285,9 @@
               d="
                 M 150 17
                 C 162 7, 174 7, 186 17
-                S 198 27, 180 17
+                S 210 27, 222 17
+                C 230 12, 234 6, 234 0
+                C 234 -6, 234 -12, 234 -18
               "
             />
 
