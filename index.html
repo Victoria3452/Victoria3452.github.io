@@ -1,5 +1,5 @@
+```html
 <!DOCTYPE html>
-
 <html>
 <head>
   <meta charset="UTF-8">
@@ -17,8 +17,8 @@
       background-color: #EEF4EC;
       background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
       margin: 0;
-      padding: 70px 40px;
-      color: #26382C;
+      padding: 75px 40px 100px;
+      color: #355944;
       overflow-x: hidden;
     }
 
@@ -27,115 +27,304 @@
       margin: 0 auto;
     }
 
-    /* Main title */
+    /* =========================
+       TITLE
+       ========================= */
+
     h1 {
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
       color: #3F6B4A;
-      font-size: 2.7em;
-      line-height: 1.25;
+      font-size: 3.2em;
+      line-height: 1.18;
       text-align: center;
-      margin: 0;
+      max-width: 850px;
+      margin: 0 auto 100px;
       letter-spacing: 0.5px;
+
       animation: fadeDown 1s ease-out;
     }
 
-    /* Wavy line underneath title */
-    .title-line {
-      width: 200px;
-      height: 30px;
-      margin: 20px auto 65px;
-      position: relative;
-      animation: fadeIn 1s ease-out 0.4s both;
-    }
+    /* =========================
+       SECTIONS
+       ========================= */
 
-    .title-line::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 8px;
-      width: 200px;
-      height: 15px;
-      border-top: 3px solid #9B8FB5;
-      border-radius: 50%;
-      transform: rotate(-1deg);
-    }
-
-    .title-line::after {
-      content: "";
-      position: absolute;
-      left: 15px;
-      top: 13px;
-      width: 170px;
-      height: 12px;
-      border-top: 2px solid #7DA887;
-      border-radius: 50%;
-      transform: rotate(2deg);
-    }
-
-    /* Sections */
     section {
-      margin-bottom: 65px;
+      margin-bottom: 70px;
+
       opacity: 0;
       transform: translateY(20px);
+
       animation: fadeUp 0.8s ease-out forwards;
     }
 
     section:first-of-type {
-      animation-delay: 0.7s;
+      animation-delay: 0.5s;
     }
 
     section:nth-of-type(2) {
-      animation-delay: 1s;
+      animation-delay: 0.8s;
     }
 
-    /* Section headings */
+    /* =========================
+       HEADING
+       ========================= */
+
+    .section-heading {
+      display: inline-block;
+      margin-bottom: 22px;
+    }
+
     h2 {
       font-family: 'Quicksand', sans-serif;
-      font-size: 1.8em;
+      font-size: 2.15em;
       font-weight: 700;
       color: #3F6B4A;
-      margin: 0 0 18px;
+
+      margin: 0 0 4px;
+
       letter-spacing: 0.5px;
-      display: inline-block;
+
       transition: transform 0.3s ease;
     }
 
-    h2:hover {
-      transform: translateX(5px);
+    .section-heading:hover h2 {
+      transform: translateX(3px);
     }
 
-    /* Small wavy underline */
-    h2::after {
-      content: "";
+    /* =========================
+       SMALL CUTE WAVE
+       ========================= */
+
+    .wave {
+      position: relative;
+
+      width: 125px;
+      height: 55px;
+
+      overflow: visible;
+    }
+
+    .wave svg {
+      width: 100%;
+      height: 100%;
+
       display: block;
-      width: 65px;
-      height: 10px;
-      margin-top: 2px;
-      border-bottom: 3px solid #9B8FB5;
+
+      overflow: visible;
+    }
+
+    /* The visible resting wave */
+    .wave-line {
+      fill: none;
+
+      stroke: #6F9478;
+      stroke-width: 3;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /*
+      The extension starts EXACTLY where
+      the resting wave ends: x=112, y=17.
+
+      It continues the same squiggly motion,
+      dips slightly downward, then curves
+      upward into the flower.
+    */
+    .wave-extension {
+      fill: none;
+
+      stroke: #6F9478;
+      stroke-width: 3;
+
+      stroke-linecap: round;
+      stroke-linejoin: round;
+
+      /*
+        Use the SVG path itself for the animation
+        so the entire continuation is revealed
+        smoothly along its actual path.
+      */
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+
+      transition: stroke-dashoffset 0.65s ease;
+    }
+
+    /* Grow ONLY the continuation on hover */
+    .section-heading:hover .wave-extension {
+      stroke-dashoffset: 0;
+    }
+
+    /* =========================
+       FLOWER
+       ========================= */
+
+    .flower {
+      position: absolute;
+
+      /*
+        SVG endpoint is:
+
+          x = 158
+          y = 3
+
+        Since the SVG viewBox is 180 wide,
+        convert that point into the 125px
+        displayed wave width.
+
+        The flower is centered exactly on
+        that endpoint.
+      */
+      left: calc(87.7778% - 15px);
+      top: -12px;
+
+      width: 30px;
+      height: 30px;
+
+      opacity: 0;
+
+      transform: scale(0);
+
+      transform-origin: center center;
+
+      transition:
+        opacity 0.2s ease,
+        transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+
+      pointer-events: none;
+    }
+
+    /*
+      The flower appears just as the stem
+      finishes growing.
+    */
+    .section-heading:hover .flower {
+      opacity: 1;
+      transform: scale(1);
+
+      transition-delay: 0.5s;
+    }
+
+    /* =========================
+       FLOWER PETALS
+       ========================= */
+
+    .petal {
+      position: absolute;
+
+      width: 12px;
+      height: 12px;
+
+      background: #9B8FB5;
+
       border-radius: 50%;
-      transform: rotate(-2deg);
-      transition: width 0.35s ease;
+
+      left: 9px;
+      top: 9px;
     }
 
-    h2:hover::after {
-      width: 95px;
+    .petal:nth-child(1) {
+      transform: translateY(-6px);
     }
 
-    /* Body text */
+    .petal:nth-child(2) {
+      transform: translateX(6px);
+    }
+
+    .petal:nth-child(3) {
+      transform: translateY(6px);
+    }
+
+    .petal:nth-child(4) {
+      transform: translateX(-6px);
+    }
+
+    .flower-center {
+      position: absolute;
+
+      width: 8px;
+      height: 8px;
+
+      left: 11px;
+      top: 11px;
+
+      background: #E6D58A;
+
+      border-radius: 50%;
+
+      z-index: 2;
+    }
+
+    /* =========================
+       LEAF
+       ========================= */
+
+    .leaf {
+      position: absolute;
+
+      /*
+        Positioned near the final upward
+        part of the stem.
+      */
+      left: 91px;
+      top: 17px;
+
+      width: 17px;
+      height: 8px;
+
+      background: #6F9478;
+
+      border-radius: 100% 0 100% 0;
+
+      opacity: 0;
+
+      transform:
+        scale(0)
+        rotate(-30deg);
+
+      transform-origin: right center;
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.4s ease;
+    }
+
+    .section-heading:hover .leaf {
+      opacity: 1;
+
+      transform:
+        scale(1)
+        rotate(-30deg);
+
+      transition-delay: 0.4s;
+    }
+
+    /* =========================
+       BODY TEXT
+       ========================= */
+
     p {
-      font-size: 1.05em;
-      line-height: 1.8;
+      font-size: 1.12em;
+      line-height: 1.85;
+
       margin: 0;
-      max-width: 750px;
-      color: #26382C;
+
+      max-width: 800px;
+
+      color: #355944;
     }
 
-    /* Animations */
+    /* =========================
+       PAGE ANIMATIONS
+       ========================= */
+
     @keyframes fadeDown {
       from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-25px);
       }
 
       to {
@@ -147,7 +336,7 @@
     @keyframes fadeUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(25px);
       }
 
       to {
@@ -156,72 +345,214 @@
       }
     }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
+    /* =========================
+       MOBILE
+       ========================= */
 
-      to {
-        opacity: 1;
-      }
-    }
-
-    /* Mobile */
     @media (max-width: 750px) {
+
       body {
-        padding: 45px 25px;
+        padding: 50px 25px 80px;
       }
 
       h1 {
-        font-size: 2em;
-      }
-
-      .title-line {
-        margin-bottom: 50px;
+        font-size: 2.3em;
+        margin-bottom: 70px;
       }
 
       h2 {
-        font-size: 1.55em;
+        font-size: 1.8em;
+      }
+
+      .wave {
+        width: 115px;
       }
 
       p {
-        font-size: 1em;
-        line-height: 1.7;
+        font-size: 1.05em;
+        line-height: 1.75;
       }
     }
   </style>
-
 </head>
 
 <body>
 
   <div class="content">
 
-```
-<h1>Victoria’s Creative Embedded Systems Portfolio</h1>
+    <h1>
+      Victoria’s Creative Embedded Systems Portfolio
+    </h1>
 
-<div class="title-line"></div>
 
-<section>
-  <h2>About Me</h2>
+    <!-- =========================
+         ABOUT ME
+         ========================= -->
 
-  <p>
-    Hi! I’m Victoria Gonzalez and I’m a senior studying computer science and dance at Columbia University.
-    Through this class I hope to learn about creative uses of computation, getting practice with electronics,
-    hardware, and documentation. I’m excited to share my projects here!
-  </p>
-</section>
+    <section>
 
-<section>
-  <h2>Projects</h2>
+      <div class="section-heading">
 
-  <p>
-    Projects will appear here!
-  </p>
-</section>
-```
+        <h2>About Me</h2>
+
+        <div class="wave">
+
+          <svg
+            viewBox="0 0 180 55"
+            preserveAspectRatio="none"
+          >
+
+            <!--
+              RESTING WAVE
+
+              The little underline that is always visible.
+              Its endpoint is exactly (112, 17).
+            -->
+            <path
+              class="wave-line"
+              d="
+                M 2 17
+
+                C 15 7, 25 7, 38 17
+                S 61 27, 75 17
+                S 99 7, 112 17
+              "
+            />
+
+            <!--
+              HOVER EXTENSION
+
+              Starts exactly at the resting endpoint.
+
+              Notice that it does NOT jump somewhere new.
+              It continues naturally from the existing wave,
+              dips down, then curves upward into the flower.
+            -->
+            <path
+              class="wave-extension"
+              pathLength="100"
+              d="
+                M 112 17
+
+                C 122 27, 130 32, 139 28
+
+                C 148 24, 153 14, 158 3
+              "
+            />
+
+          </svg>
+
+
+          <!-- Leaf -->
+          <div class="leaf"></div>
+
+
+          <!-- Purple flower -->
+          <div class="flower">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="flower-center"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        Hi! I’m Victoria Gonzalez and I’m a senior studying computer science and dance at Columbia University.
+        Through this class I hope to learn about creative uses of computation, getting practice with electronics,
+        hardware, and documentation. I’m excited to share my projects here!
+      </p>
+
+    </section>
+
+
+    <!-- =========================
+         PROJECTS
+         ========================= -->
+
+    <section>
+
+      <div class="section-heading">
+
+        <h2>Projects</h2>
+
+        <div class="wave">
+
+          <svg
+            viewBox="0 0 180 55"
+            preserveAspectRatio="none"
+          >
+
+            <!-- Same resting wave -->
+            <path
+              class="wave-line"
+              d="
+                M 2 17
+
+                C 15 7, 25 7, 38 17
+                S 61 27, 75 17
+                S 99 7, 112 17
+              "
+            />
+
+            <!-- Same continuation -->
+            <path
+              class="wave-extension"
+              pathLength="100"
+              d="
+                M 112 17
+
+                C 122 27, 130 32, 139 28
+
+                C 148 24, 153 14, 158 3
+              "
+            />
+
+          </svg>
+
+
+          <!-- Leaf -->
+          <div class="leaf"></div>
+
+
+          <!-- Purple flower -->
+          <div class="flower">
+
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+
+            <div class="flower-center"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <p>
+        Projects will appear here!
+      </p>
+
+    </section>
 
   </div>
 
 </body>
 </html>
+```
+
+The important change is that the **flower is now centered on the actual endpoint of the SVG extension**, rather than being positioned from the right edge of the `.wave`. So when the stem grows, it should visually travel:
+
+**existing squiggle → same path/flow → little dip → curve upward → directly into flower center** 🌱🌸
+
+I also kept the flower itself from appearing until the stem has essentially finished growing.
