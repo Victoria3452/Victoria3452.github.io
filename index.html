@@ -42,8 +42,8 @@
 
     /* Wavy line underneath title */
     .title-line {
-      width: 180px;
-      height: 25px;
+      width: 200px;
+      height: 30px;
       margin: 20px auto 65px;
       position: relative;
       animation: fadeIn 1s ease-out 0.4s both;
@@ -52,23 +52,25 @@
     .title-line::before {
       content: "";
       position: absolute;
-      width: 180px;
+      left: 0;
+      top: 8px;
+      width: 200px;
       height: 15px;
       border-top: 3px solid #9B8FB5;
       border-radius: 50%;
-      transform: rotate(-2deg);
+      transform: rotate(-1deg);
     }
 
     .title-line::after {
       content: "";
       position: absolute;
-      width: 105px;
-      height: 15px;
-      left: 38px;
-      top: 6px;
+      left: 15px;
+      top: 13px;
+      width: 170px;
+      height: 12px;
       border-top: 2px solid #7DA887;
       border-radius: 50%;
-      transform: rotate(3deg);
+      transform: rotate(2deg);
     }
 
     /* Sections */
@@ -79,11 +81,11 @@
       animation: fadeUp 0.8s ease-out forwards;
     }
 
-    section:nth-child(2) {
+    section:first-of-type {
       animation-delay: 0.7s;
     }
 
-    section:nth-child(3) {
+    section:nth-of-type(2) {
       animation-delay: 1s;
     }
 
@@ -103,21 +105,21 @@
       transform: translateX(5px);
     }
 
-    /* Wavy heading underline */
+    /* Small wavy underline */
     h2::after {
       content: "";
       display: block;
-      width: 55px;
-      height: 9px;
-      margin-top: 3px;
+      width: 65px;
+      height: 10px;
+      margin-top: 2px;
       border-bottom: 3px solid #9B8FB5;
       border-radius: 50%;
-      transform: rotate(-3deg);
+      transform: rotate(-2deg);
       transition: width 0.35s ease;
     }
 
     h2:hover::after {
-      width: 90px;
+      width: 95px;
     }
 
     /* Body text */
@@ -127,20 +129,6 @@
       margin: 0;
       max-width: 750px;
       color: #26382C;
-    }
-
-    /* A second subtle wavy divider */
-    section:first-of-type::after {
-      content: "";
-      display: block;
-      width: 100%;
-      max-width: 600px;
-      height: 25px;
-      margin: 55px auto 0;
-      border-bottom: 2px solid #7DA887;
-      border-radius: 50%;
-      transform: rotate(-1deg);
-      opacity: 0.7;
     }
 
     /* Animations */
