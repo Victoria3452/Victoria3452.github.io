@@ -9,64 +9,52 @@
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f9f4;
+      background-color: #e6f2e6;
       background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-      margin: 40px;
+      margin: 60px;
       color: #3b4a3f;
     }
 
     h1 {
-      text-align: center;
-      font-size: 2.4em;
-      margin-bottom: 40px;
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
       color: #4a7c59;
+      font-size: 2.6em;
+      text-align: center;
+      margin-bottom: 60px;
       letter-spacing: 1px;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px;
-      max-width: 1000px;
-      margin: auto;
-      background: #F3EDE4;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.05);
+    .content {
+      max-width: 850px;
+      margin: 0 auto;
     }
 
-    .section {
-      padding: 25px;
-      background-color: #e6f2e6;
-      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
-      background-blend-mode: multiply;
-      border-radius: 20px;
-      border: 2px dashed #4a7c59;
+    section {
+      margin-bottom: 50px;
     }
 
-    .section h2 {
-      font-size: 1.6em;
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: #4a7c59;
+    h2 {
       font-family: 'Quicksand', sans-serif;
+      font-size: 1.8em;
+      color: #4a7c59;
+      margin-bottom: 15px;
     }
 
-    .section p {
-      line-height: 1.6;
-      margin-bottom: 0;
+    p {
+      font-size: 1.05em;
+      line-height: 1.7;
+      margin: 0;
     }
 
     @media (max-width: 750px) {
       body {
-        margin: 20px;
+        margin: 30px;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
-        padding: 20px;
+      h1 {
+        font-size: 2em;
+        margin-bottom: 40px;
       }
     }
   </style>
@@ -76,23 +64,23 @@
 
   <h1>Victoria’s Creative Embedded Systems Portfolio</h1>
 
-  <div class="grid">
+  <div class="content">
 
-    <div class="section">
+    <section>
       <h2>About Me</h2>
       <p>
         Hi! I’m Victoria Gonzalez and I’m a senior studying computer science and dance at Columbia University.
         Through this class I hope to learn about creative uses of computation, getting practice with electronics,
         hardware, and documentation. I’m excited to share my projects here!
       </p>
-    </div>
+    </section>
 
-    <div class="section">
+    <section>
       <h2>Projects</h2>
       <p>
         Projects will appear here!
       </p>
-    </div>
+    </section>
 
   </div>
 
