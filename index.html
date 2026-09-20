@@ -99,7 +99,7 @@
     .wave {
       position: relative;
 
-      width: 125px;
+      width: 145px;
       height: 55px;
 
       overflow: visible;
@@ -126,12 +126,13 @@
     }
 
     /*
-      The extension starts EXACTLY where
-      the resting wave ends: x=112, y=17.
+      The extension begins exactly where
+      the resting wave ends.
 
-      It continues the same squiggly motion,
-      dips slightly downward, then curves
-      upward into the flower.
+      It continues the same gentle rhythm,
+      stays around the same height as the
+      existing wave, and then curves upward
+      into the flower.
     */
     .wave-extension {
       fill: none;
@@ -142,18 +143,12 @@
       stroke-linecap: round;
       stroke-linejoin: round;
 
-      /*
-        Use the SVG path itself for the animation
-        so the entire continuation is revealed
-        smoothly along its actual path.
-      */
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
 
       transition: stroke-dashoffset 0.65s ease;
     }
 
-    /* Grow ONLY the continuation on hover */
     .section-heading:hover .wave-extension {
       stroke-dashoffset: 0;
     }
@@ -166,17 +161,8 @@
       position: absolute;
 
       /*
-        SVG endpoint is:
-
-          x = 158
-          y = 3
-
-        Since the SVG viewBox is 180 wide,
-        convert that point into the 125px
-        displayed wave width.
-
-        The flower is centered exactly on
-        that endpoint.
+        The flower is centered on the
+        final point of the SVG stem.
       */
       left: calc(87.7778% - 15px);
       top: -12px;
@@ -197,10 +183,6 @@
       pointer-events: none;
     }
 
-    /*
-      The flower appears just as the stem
-      finishes growing.
-    */
     .section-heading:hover .flower {
       opacity: 1;
       transform: scale(1);
@@ -265,11 +247,7 @@
     .leaf {
       position: absolute;
 
-      /*
-        Positioned near the final upward
-        part of the stem.
-      */
-      left: 91px;
+      left: 106px;
       top: 17px;
 
       width: 17px;
@@ -365,7 +343,7 @@
       }
 
       .wave {
-        width: 115px;
+        width: 135px;
       }
 
       p {
@@ -405,8 +383,8 @@
             <!--
               RESTING WAVE
 
-              The little underline that is always visible.
-              Its endpoint is exactly (112, 17).
+              Three complete little humps before
+              the hover extension begins.
             -->
             <path
               class="wave-line"
@@ -416,27 +394,29 @@
                 C 15 7, 25 7, 38 17
                 S 61 27, 75 17
                 S 99 7, 112 17
+                S 136 27, 150 17
               "
             />
 
             <!--
               HOVER EXTENSION
 
-              Starts exactly at the resting endpoint.
+              Starts exactly at the end of the
+              resting wave.
 
-              Notice that it does NOT jump somewhere new.
-              It continues naturally from the existing wave,
-              dips down, then curves upward into the flower.
+              It does NOT dip below the wave.
+              Instead it continues gently and
+              curves upward toward the flower.
             -->
             <path
               class="wave-extension"
               pathLength="100"
               d="
-                M 112 17
+                M 150 17
 
-                C 122 27, 130 32, 139 28
+                C 157 11, 161 9, 166 9
 
-                C 148 24, 153 14, 158 3
+                C 169 9, 172 6, 175 3
               "
             />
 
@@ -490,7 +470,7 @@
             preserveAspectRatio="none"
           >
 
-            <!-- Same resting wave -->
+            <!-- Three-hump resting wave -->
             <path
               class="wave-line"
               d="
@@ -499,19 +479,20 @@
                 C 15 7, 25 7, 38 17
                 S 61 27, 75 17
                 S 99 7, 112 17
+                S 136 27, 150 17
               "
             />
 
-            <!-- Same continuation -->
+            <!-- Gentle continuation into flower -->
             <path
               class="wave-extension"
               pathLength="100"
               d="
-                M 112 17
+                M 150 17
 
-                C 122 27, 130 32, 139 28
+                C 157 11, 161 9, 166 9
 
-                C 148 24, 153 14, 158 3
+                C 169 9, 172 6, 175 3
               "
             />
 
@@ -550,9 +531,3 @@
 </body>
 </html>
 ```
-
-The important change is that the **flower is now centered on the actual endpoint of the SVG extension**, rather than being positioned from the right edge of the `.wave`. So when the stem grows, it should visually travel:
-
-**existing squiggle → same path/flow → little dip → curve upward → directly into flower center** 🌱🌸
-
-I also kept the flower itself from appearing until the stem has essentially finished growing.
