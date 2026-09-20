@@ -185,6 +185,99 @@
     }
 
     /* =========================
+       FLOWER DOTS ON TITLE
+       ========================= */
+    
+    .flower-title .flower-i {
+      position: relative;
+      display: inline-block;
+    }
+    
+    /*
+      The normal "i" dot stays visible.
+      We use a tiny flower over it on hover.
+    */
+    .flower-title .flower-i::after {
+      content: "";
+      position: absolute;
+    
+      /*
+        Position the flower directly over
+        the normal dot of the i.
+      */
+      left: 50%;
+      top: 0.08em;
+    
+      width: 0.28em;
+      height: 0.28em;
+    
+      transform: translateX(-50%) scale(0);
+    
+      background:
+        radial-gradient(
+          circle at 50% 15%,
+          #9B8FB5 0 35%,
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 85% 50%,
+          #9B8FB5 0 35%,
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 50% 85%,
+          #9B8FB5 0 35%,
+          transparent 38%
+        ),
+        radial-gradient(
+          circle at 15% 50%,
+          #9B8FB5 0 35%,
+          transparent 38%
+        );
+    
+      border-radius: 50%;
+    
+      transition:
+        transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    
+    /*
+      Make the normal i dot disappear
+      underneath the flower.
+    */
+    .flower-title .flower-i::before {
+      content: "";
+    
+      position: absolute;
+    
+      left: 50%;
+      top: 0.08em;
+    
+      width: 0.28em;
+      height: 0.28em;
+    
+      transform: translateX(-50%) scale(1);
+    
+      background: #3F6B4A;
+    
+      border-radius: 50%;
+    
+      transition: transform 0.2s ease;
+    }
+    
+    /*
+      Hovering the title makes the i dots bloom.
+    */
+    .flower-title:hover .flower-i::before {
+      transform: translateX(-50%) scale(0);
+    }
+    
+    .flower-title:hover .flower-i::after {
+      transform: translateX(-50%) scale(1);
+    }
+
+
+    /* =========================
        TEXT
        ========================= */
 
@@ -216,11 +309,12 @@
 <body>
 
   <div class="content">
-
-    <h1>
-      Victoria’s Creative Embedded Systems Portfolio
+    
+    <h1 class="flower-title">
+      V<span class="flower-i">i</span>ctor<span class="flower-i">i</span>a’s
+      Creat<span class="flower-i">i</span>ve Embedded Systems Portfolio
     </h1>
-
+   
     <!-- =========================
          ABOUT ME
          ========================= -->
