@@ -99,7 +99,11 @@
     .wave {
       position: relative;
 
-      width: 155px;
+      /*
+        The wave itself is wide enough that
+        the full natural extension can be shown.
+      */
+      width: 180px;
       height: 55px;
 
       overflow: visible;
@@ -129,9 +133,15 @@
     }
 
     /*
-      Three little humps are visible normally.
+      IMPORTANT:
 
-      The final point is 150,17.
+      This entire path is always visible.
+
+      Nothing gets removed or shortened when
+      the flower appears.
+
+      The resting wave contains FOUR natural
+      wave movements.
     */
     .wave-line {
       d: path(
@@ -157,8 +167,10 @@
       stroke-linejoin: round;
 
       /*
-        The path is revealed from beginning
-        to end, following its actual shape.
+        Only THIS path is animated.
+
+        It begins exactly at the endpoint
+        of the permanent resting wave.
       */
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
@@ -171,19 +183,27 @@
     }
 
     /*
-      The extension behaves like another
-      little hump first.
+      The continuation:
 
-      It starts exactly where the resting
-      wave ends, rises slightly, falls slightly,
-      then turns upward toward the flower.
+      1. Starts at the existing endpoint.
+      2. Makes another natural hump.
+      3. Makes another gentle hump.
+      4. Finally rises into the flower.
+
+      It never drops dramatically below
+      the resting wave.
     */
     .wave-extension {
       d: path(
         "M 150 17
-         C 158 7, 166 7, 173 17
-         C 176 20, 177 13, 178 7
-         C 179 4, 180 2, 180 1"
+
+         C 158 7, 166 7, 174 17
+
+         C 177 21, 178 18, 178 14
+
+         C 178 10, 178 6, 178 3
+
+         C 178 1, 178 0, 178 0"
       );
     }
 
@@ -195,11 +215,13 @@
       position: absolute;
 
       /*
-        The flower is centered on the final
-        point of the stem.
+        The SVG ends at x=178, y=0.
+
+        The flower is centered directly on
+        that point.
       */
-      left: calc(100% - 15px);
-      top: -14px;
+      left: calc(98.8889% - 15px);
+      top: -15px;
 
       width: 30px;
       height: 30px;
@@ -221,6 +243,9 @@
       opacity: 1;
       transform: scale(1);
 
+      /*
+        Stem gets time to grow first.
+      */
       transition-delay: 0.55s;
     }
 
@@ -272,6 +297,54 @@
       border-radius: 50%;
 
       z-index: 2;
+    }
+
+    /* =========================
+       LEAF
+       ========================= */
+
+    .leaf {
+      position: absolute;
+
+      /*
+        Attached to the final upward stem.
+        It appears to grow from the stem rather
+        than floating independently.
+      */
+      left: 154px;
+      top: 8px;
+
+      width: 18px;
+      height: 9px;
+
+      background: #6F9478;
+
+      border-radius: 100% 0 100% 0;
+
+      opacity: 0;
+
+      transform:
+        scale(0)
+        rotate(-30deg);
+
+      transform-origin: right center;
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.4s ease;
+    }
+
+    .section-heading:hover .leaf {
+      opacity: 1;
+
+      transform:
+        scale(1)
+        rotate(-30deg);
+
+      /*
+        Leaf appears shortly before flower.
+      */
+      transition-delay: 0.42s;
     }
 
     /* =========================
@@ -337,7 +410,7 @@
       }
 
       .wave {
-        width: 145px;
+        width: 175px;
       }
 
       p {
@@ -374,7 +447,14 @@
             preserveAspectRatio="none"
           >
 
-            <!-- Three-hump resting wave -->
+            <!--
+              PERMANENT WAVE
+
+              This NEVER changes.
+
+              The entire wave remains visible
+              before, during, and after hover.
+            -->
             <path
               class="wave-line"
               d="
@@ -388,11 +468,12 @@
             />
 
             <!--
-              Natural fourth hump.
+              HOVER-ONLY CONTINUATION
 
-              It continues directly from the
-              existing wave rather than creating
-              a separate-looking stem.
+              Starts at exactly x=150, y=17.
+
+              It adds more natural wave before
+              turning upward into the flower.
             -->
             <path
               class="wave-extension"
@@ -400,15 +481,20 @@
               d="
                 M 150 17
 
-                C 158 7, 166 7, 173 17
+                C 158 7, 166 7, 174 17
 
-                C 176 20, 177 13, 178 7
+                C 177 21, 178 18, 178 14
 
-                C 179 4, 180 2, 180 1
+                C 178 10, 178 6, 178 3
+
+                C 178 1, 178 0, 178 0
               "
             />
 
           </svg>
+
+          <!-- Leaf -->
+          <div class="leaf"></div>
 
           <!-- Flower -->
           <div class="flower">
@@ -453,7 +539,7 @@
             preserveAspectRatio="none"
           >
 
-            <!-- Three-hump resting wave -->
+            <!-- Permanent wave -->
             <path
               class="wave-line"
               d="
@@ -466,22 +552,27 @@
               "
             />
 
-            <!-- Natural fourth hump + upward curl -->
+            <!-- Hover continuation -->
             <path
               class="wave-extension"
               pathLength="100"
               d="
                 M 150 17
 
-                C 158 7, 166 7, 173 17
+                C 158 7, 166 7, 174 17
 
-                C 176 20, 177 13, 178 7
+                C 177 21, 178 18, 178 14
 
-                C 179 4, 180 2, 180 1
+                C 178 10, 178 6, 178 3
+
+                C 178 1, 178 0, 178 0
               "
             />
 
           </svg>
+
+          <!-- Leaf -->
+          <div class="leaf"></div>
 
           <!-- Flower -->
           <div class="flower">
