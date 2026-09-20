@@ -43,20 +43,22 @@
     .i-bloom {
       position: relative;
       display: inline-block;
+      line-height: 1;
     }
 
     .i-letter {
       position: relative;
       z-index: 2;
+      font-family: 'Quicksand', sans-serif;
     }
 
     .i-flower {
       position: absolute;
       left: 50%;
-      top: -6px;
+      bottom: 0px; /* sits exactly where the dot is */
       transform: translateX(-50%) scale(0);
-      width: 14px;
-      height: 14px;
+      width: 12px;
+      height: 12px;
       pointer-events: none;
       opacity: 0;
 
@@ -72,27 +74,27 @@
 
     .i-flower .petal {
       position: absolute;
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       background: #9B8FB5;
       border-radius: 50%;
-      left: 4px;
-      top: 4px;
+      left: 3.5px;
+      top: 3.5px;
     }
 
-    .i-flower .petal:nth-child(1) { transform: translateY(-4px); }
-    .i-flower .petal:nth-child(2) { transform: translateX(4px); }
-    .i-flower .petal:nth-child(3) { transform: translateY(4px); }
-    .i-flower .petal:nth-child(4) { transform: translateX(-4px); }
+    .i-flower .petal:nth-child(1) { transform: translateY(-3px); }
+    .i-flower .petal:nth-child(2) { transform: translateX(3px); }
+    .i-flower .petal:nth-child(3) { transform: translateY(3px); }
+    .i-flower .petal:nth-child(4) { transform: translateX(-3px); }
 
     .i-flower .center {
       position: absolute;
-      width: 4px;
-      height: 4px;
+      width: 3px;
+      height: 3px;
       background: #E6D58A;
       border-radius: 50%;
-      left: 5px;
-      top: 5px;
+      left: 4.5px;
+      top: 4.5px;
     }
 
     /* =========================
