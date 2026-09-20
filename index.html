@@ -39,68 +39,6 @@
       animation: fadeDown 1s ease-out;
     }
 
-    /* i-dot bloom */
-    .i-bloom {
-      position: relative;
-      display: inline;        /* no extra spacing */
-      line-height: inherit;   /* keeps baseline perfect */
-    }
-
-    .i-letter {
-      position: relative;
-      z-index: 2;
-      font-family: 'Quicksand', sans-serif;
-    }
-
-    /* flower exactly on the dot */
-    .i-flower {
-      position: absolute;
-
-      left: 50%;
-      top: -0.62em;           /* dot height — adjust slightly if needed */
-      transform: translateX(-50%) scale(0);
-
-      width: 12px;
-      height: 12px;
-
-      pointer-events: none;
-      opacity: 0;
-
-      transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.2s ease;
-    }
-
-    .i-bloom:hover .i-flower {
-      transform: translateX(-50%) scale(1);
-      opacity: 1;
-    }
-
-    .i-flower .petal {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: #9B8FB5;
-      border-radius: 50%;
-      left: 3.5px;
-      top: 3.5px;
-    }
-
-    .i-flower .petal:nth-child(1) { transform: translateY(-3px); }
-    .i-flower .petal:nth-child(2) { transform: translateX(3px); }
-    .i-flower .petal:nth-child(3) { transform: translateY(3px); }
-    .i-flower .petal:nth-child(4) { transform: translateX(-3px); }
-
-    .i-flower .center {
-      position: absolute;
-      width: 3px;
-      height: 3px;
-      background: #E6D58A;
-      border-radius: 50%;
-      left: 4.5px;
-      top: 4.5px;
-    }
-
     /* =========================
        SECTIONS
        ========================= */
@@ -279,7 +217,7 @@
 
   <div class="content">
 
-    <h1 id="title">
+    <h1>
       Victoria’s Creative Embedded Systems Portfolio
     </h1>
 
@@ -393,27 +331,6 @@
     </section>
 
   </div>
-
-  <!-- =========================
-       AUTO-FLOWER SCRIPT
-       ========================= -->
-
-  <script>
-    const title = document.getElementById("title");
-
-    title.innerHTML = title.textContent.replace(/i/g, () => `
-      <span class="i-bloom">
-        <span class="i-letter">i</span>
-        <span class="i-flower">
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="petal"></span>
-          <span class="center"></span>
-        </span>
-      </span>
-    `);
-  </script>
 
 </body>
 </html>
