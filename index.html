@@ -24,6 +24,10 @@
       margin: 0 auto;
     }
 
+    /* =========================
+       TITLE
+       ========================= */
+
     h1 {
       font-family: 'Quicksand', sans-serif;
       font-weight: 700;
@@ -34,6 +38,66 @@
       margin: 0 auto 100px;
       animation: fadeDown 1s ease-out;
     }
+
+    /* i-dot bloom */
+    .i-bloom {
+      position: relative;
+      display: inline-block;
+    }
+
+    .i-letter {
+      position: relative;
+      z-index: 2;
+    }
+
+    .i-flower {
+      position: absolute;
+      left: 50%;
+      top: -6px;
+      transform: translateX(-50%) scale(0);
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+      opacity: 0;
+
+      transition:
+        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.2s ease;
+    }
+
+    .i-bloom:hover .i-flower {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+    }
+
+    .i-flower .petal {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #9B8FB5;
+      border-radius: 50%;
+      left: 4px;
+      top: 4px;
+    }
+
+    .i-flower .petal:nth-child(1) { transform: translateY(-4px); }
+    .i-flower .petal:nth-child(2) { transform: translateX(4px); }
+    .i-flower .petal:nth-child(3) { transform: translateY(4px); }
+    .i-flower .petal:nth-child(4) { transform: translateX(-4px); }
+
+    .i-flower .center {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #E6D58A;
+      border-radius: 50%;
+      left: 5px;
+      top: 5px;
+    }
+
+    /* =========================
+       SECTIONS
+       ========================= */
 
     section {
       margin-bottom: 70px;
@@ -60,35 +124,9 @@
       transition: none;
     }
 
-    /* i-dot flower bloom */
-    .i-bloom {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .i-bloom::after {
-      content: "";
-      position: absolute;
-    
-      left: 50%;
-      top: -14px;          /* adjust vertical position */
-      transform: translateX(-50%) scale(0);
-    
-      width: 12px;
-      height: 12px;
-    
-      background: #9B8FB5; /* petal color */
-      border-radius: 50%;
-    
-      transition:
-        transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .i-bloom:hover::after {
-      transform: translateX(-50%) scale(1);
-    }
-
-    
+    /* =========================
+       WAVE + FLOWER
+       ========================= */
 
     .wave {
       position: relative;
@@ -123,12 +161,11 @@
       stroke-dashoffset: 0;
     }
 
-    /* FLOWER — aligned to natural path end */
+    /* Flower at end of squiggle */
     .flower {
       position: absolute;
-
-      right: -4px;   /* aligns with end of natural path */
-      top: -24px;    /* matches stem tip */
+      right: -4px;
+      top: -24px;
 
       width: 30px;
       height: 30px;
@@ -176,10 +213,9 @@
       z-index: 2;
     }
 
-    /* LEAF — aligned to natural curve */
+    /* Leaf */
     .leaf {
       position: absolute;
-
       right: 30px;
       top: 4px;
 
@@ -204,6 +240,10 @@
       transition-delay: 0.48s;
     }
 
+    /* =========================
+       TEXT
+       ========================= */
+
     p {
       font-size: 1.12em;
       line-height: 1.85;
@@ -211,6 +251,10 @@
       max-width: 800px;
       color: #355944;
     }
+
+    /* =========================
+       ANIMATIONS
+       ========================= */
 
     @keyframes fadeDown {
       from { opacity: 0; transform: translateY(-25px); }
@@ -222,13 +266,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 750px) {
-      body { padding: 50px 25px 80px; }
-      h1 { font-size: 2.3em; margin-bottom: 70px; }
-      h2 { font-size: 1.8em; }
-      .wave { width: 175px; }
-      p { font-size: 1.05em; line-height: 1.75; }
-    }
   </style>
 </head>
 
@@ -236,7 +273,13 @@
 
   <div class="content">
 
-    <h1>V<span class="i-bloom">i</span>ctor<span class="i-bloom">i</span>a’s Creat<span class="i-bloom">i</span>ve Embedded Systems Portfol<span class="i-bloom">i</span>o</h1>
+    <h1 id="title">
+      Victoria’s Creative Embedded Systems Portfolio
+    </h1>
+
+    <!-- =========================
+         ABOUT ME
+         ========================= -->
 
     <section>
       <div class="section-heading">
@@ -256,7 +299,7 @@
               "
             />
 
-            <!-- ⭐ Natural smooth extension you liked -->
+            <!-- Natural smooth extension -->
             <path
               class="wave-extension"
               pathLength="100"
@@ -290,6 +333,10 @@
         hardware, and documentation. I’m excited to share my projects here!
       </p>
     </section>
+
+    <!-- =========================
+         PROJECTS
+         ========================= -->
 
     <section>
       <div class="section-heading">
@@ -340,6 +387,27 @@
     </section>
 
   </div>
+
+  <!-- =========================
+       AUTO-FLOWER SCRIPT
+       ========================= -->
+
+  <script>
+    const title = document.getElementById("title");
+
+    title.innerHTML = title.textContent.replace(/i/g, () => `
+      <span class="i-bloom">
+        <span class="i-letter">i</span>
+        <span class="i-flower">
+          <span class="petal"></span>
+          <span class="petal"></span>
+          <span class="petal"></span>
+          <span class="petal"></span>
+          <span class="center"></span>
+        </span>
+      </span>
+    `);
+  </script>
 
 </body>
 </html>
