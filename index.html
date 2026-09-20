@@ -85,11 +85,13 @@
 
       letter-spacing: 0.5px;
 
-      transition: transform 0.3s ease;
-    }
+      /*
+        No hover transform.
 
-    .section-heading:hover h2 {
-      transform: translateX(3px);
+        The heading stays COMPLETELY still
+        when the flower animation happens.
+      */
+      transition: none;
     }
 
     /* =========================
@@ -99,10 +101,6 @@
     .wave {
       position: relative;
 
-      /*
-        The wave itself is wide enough that
-        the full natural extension can be shown.
-      */
       width: 180px;
       height: 55px;
 
@@ -133,26 +131,10 @@
     }
 
     /*
-      IMPORTANT:
+      This is the COMPLETE resting wave.
 
-      This entire path is always visible.
-
-      Nothing gets removed or shortened when
-      the flower appears.
-
-      The resting wave contains FOUR natural
-      wave movements.
+      It is never changed when hovering.
     */
-    .wave-line {
-      d: path(
-        "M 2 17
-         C 15 7, 25 7, 38 17
-         S 61 27, 75 17
-         S 99 7, 112 17
-         S 136 27, 150 17"
-      );
-    }
-
     /* =========================
        HOVER EXTENSION
        ========================= */
@@ -167,44 +149,17 @@
       stroke-linejoin: round;
 
       /*
-        Only THIS path is animated.
-
-        It begins exactly at the endpoint
-        of the permanent resting wave.
+        The entire continuation is revealed
+        along its actual path.
       */
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
 
-      transition: stroke-dashoffset 0.7s ease;
+      transition: stroke-dashoffset 0.8s ease;
     }
 
     .section-heading:hover .wave-extension {
       stroke-dashoffset: 0;
-    }
-
-    /*
-      The continuation:
-
-      1. Starts at the existing endpoint.
-      2. Makes another natural hump.
-      3. Makes another gentle hump.
-      4. Finally rises into the flower.
-
-      It never drops dramatically below
-      the resting wave.
-    */
-    .wave-extension {
-      d: path(
-        "M 150 17
-
-         C 158 7, 166 7, 174 17
-
-         C 177 21, 178 18, 178 14
-
-         C 178 10, 178 6, 178 3
-
-         C 178 1, 178 0, 178 0"
-      );
     }
 
     /* =========================
@@ -215,12 +170,10 @@
       position: absolute;
 
       /*
-        The SVG ends at x=178, y=0.
-
-        The flower is centered directly on
-        that point.
+        The flower is placed at the FINAL
+        point of the SVG continuation.
       */
-      left: calc(98.8889% - 15px);
+      left: calc(96.6667% - 15px);
       top: -15px;
 
       width: 30px;
@@ -244,9 +197,10 @@
       transform: scale(1);
 
       /*
-        Stem gets time to grow first.
+        Wait until the stem has grown
+        almost all the way to the flower.
       */
-      transition-delay: 0.55s;
+      transition-delay: 0.65s;
     }
 
     /* =========================
@@ -307,11 +261,10 @@
       position: absolute;
 
       /*
-        Attached to the final upward stem.
-        It appears to grow from the stem rather
-        than floating independently.
+        The leaf sits beside the final
+        upward-curving portion of the stem.
       */
-      left: 154px;
+      left: 157px;
       top: 8px;
 
       width: 18px;
@@ -341,10 +294,7 @@
         scale(1)
         rotate(-30deg);
 
-      /*
-        Leaf appears shortly before flower.
-      */
-      transition-delay: 0.42s;
+      transition-delay: 0.48s;
     }
 
     /* =========================
@@ -448,12 +398,10 @@
           >
 
             <!--
-              PERMANENT WAVE
+              PERMANENT RESTING WAVE
 
+              Three complete humps.
               This NEVER changes.
-
-              The entire wave remains visible
-              before, during, and after hover.
             -->
             <path
               class="wave-line"
@@ -468,12 +416,17 @@
             />
 
             <!--
-              HOVER-ONLY CONTINUATION
+              HOVER EXTENSION
 
-              Starts at exactly x=150, y=17.
+              This continues the EXACT same
+              wave rhythm from x=150.
 
-              It adds more natural wave before
-              turning upward into the flower.
+              Notice the first hump is the
+              same size and vertical rhythm
+              as the existing humps.
+
+              Only AFTER the natural wave does
+              the stem gradually turn upward.
             -->
             <path
               class="wave-extension"
@@ -483,11 +436,11 @@
 
                 C 158 7, 166 7, 174 17
 
-                C 177 21, 178 18, 178 14
+                S 180 27, 184 17
 
-                C 178 10, 178 6, 178 3
+                C 187 12, 188 8, 188 5
 
-                C 178 1, 178 0, 178 0
+                C 188 2, 188 0, 188 -2
               "
             />
 
@@ -539,7 +492,7 @@
             preserveAspectRatio="none"
           >
 
-            <!-- Permanent wave -->
+            <!-- Permanent resting wave -->
             <path
               class="wave-line"
               d="
@@ -552,7 +505,7 @@
               "
             />
 
-            <!-- Hover continuation -->
+            <!-- Natural wave continuation -->
             <path
               class="wave-extension"
               pathLength="100"
@@ -561,11 +514,11 @@
 
                 C 158 7, 166 7, 174 17
 
-                C 177 21, 178 18, 178 14
+                S 180 27, 184 17
 
-                C 178 10, 178 6, 178 3
+                C 187 12, 188 8, 188 5
 
-                C 178 1, 178 0, 178 0
+                C 188 2, 188 0, 188 -2
               "
             />
 
