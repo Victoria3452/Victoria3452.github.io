@@ -4,93 +4,233 @@
   <meta charset="UTF-8">
   <title>Next Adventure</title>
 
-  <!-- same fonts and styles from homepage -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Quicksand:wght@500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #EEF4EC;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      margin: 0;
+      padding: 60px 40px 100px;
+      color: #355944;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 3em;
+      color: #3F6B4A;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-family: 'Quicksand', sans-serif;
+      color: #3F6B4A;
+      margin-top: 60px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.9;
+      font-size: 1.08em;
+    }
+
+    a {
+      color: #3F6B4A;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .video-placeholder,
+    .image-placeholder {
+      background: rgba(255,255,255,0.5);
+      border: 2px dashed #9DB39C;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 25px 0;
+      color: #6F9478;
+    }
+
+    .image-row {
+      display: flex;
+      gap: 20px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .image-row .image-placeholder {
+      flex: 1;
+      min-width: 220px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    blockquote {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.3em;
+      color: #3F6B4A;
+      border-left: 4px solid #9B8FB5;
+      padding-left: 20px;
+      margin: 30px 0;
+    }
+
+    ul {
+      line-height: 2;
+    }
+
+    .repo-link {
+      background: rgba(255,255,255,0.5);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="content">
 
+  index.html← Back to Portfolio</a>
+
   <h1>Next Adventure</h1>
 
-  <p class="subtitle">
+  <p>
     A generative art project exploring identity transitions through
-    randomized choices and point-cloud morphing.
+    randomized choice, text animation, and point-cloud morphing.
   </p>
 
   <h2>Video</h2>
 
-  <!-- GIF or embedded video -->
-  <img src="demo.gif" alt="Next Adventure Demo">
+  <div class="video-placeholder">
+    Replace with demo GIF or embedded video
+  </div>
 
   <h2>Inspiration & Design Decisions</h2>
 
   <p>
-    My inspiration for this project was transitioning between schools...
+    My inspiration for this project was transitioning between schools. Each
+    school comes with its own identity and encourages students to fully engage
+    with classes and traditions. I remember a shirt I had in middle school
+    that said:
   </p>
 
   <blockquote>
-    "Always be yourself unless you can be a Dragon,
-    then be a Dealey Dragon."
+    “Always be yourself unless you can be a Dragon, then be a Dealey Dragon.”
   </blockquote>
 
   <p>
-    This display explores that idea through my own school mascots...
+    This is a lighthearted message, but when considering transitioning schools
+    as taking on a new identity for the next few years of your life, it can
+    hold some weight.
+  </p>
+
+  <p>
+    This display explores that idea through my own school mascots, ranging
+    from elementary school to college. The experience begins with the quote I
+    was inspired by and then displays a choice between four school mascots.
+    One is chosen at random and flashes on the screen. It then morphs into the
+    previous school mascots I had attended up to that point, a reflection on
+    the previous places and people that have shaped me.
   </p>
 
   <div class="image-row">
-    quote-screen.jpg
-    <imgction-screen.jpg
-    <imgh-screen.jpg
+    <div class="image-placeholder">
+      Quote Screen
+    </div>
+
+    <div class="image-placeholder">
+      Selection Screen
+    </div>
+
+    <div class="image-placeholder">
+      Morph Screen
+    </div>
   </div>
 
   <p>
-    But there is a fifth choice...
+    But there is a fifth choice, ever present on the envelope. It is left
+    blank for the viewer to fill in. They can substitute their own school
+    mascot or think about the other identities they have taken on outside of
+    school.
   </p>
 
-  envelope.jpg
+  <p>
+    For me, it also represents the future choices I have yet to make. I don't
+    yet know what is after senior year, so it's a lingering thought.
+  </p>
+
+  <div class="image-placeholder">
+    Envelope with Blank Fifth Option
+  </div>
 
   <h2>Development Process</h2>
 
   <p>
-    The project began with the quote animation...
+    The project began with the quote animation. I wanted the letters to appear
+    in a random order each time, materializing out of the darkness. My next
+    focus was the selection screen where one mascot would be randomly chosen
+    and displayed. At first the experience was going to end there, but from
+    the beginning, I was interested in having the mascots morph between one
+    another.
   </p>
 
   <p>
-    To achieve this effect, I first thought I would display images...
+    To achieve this effect, I first thought I would display images and then
+    have random sections of one image fading out while random sections of the
+    other image were added to the screen. To prepare the images for the
+    display, I used a photo outline tool, saving as a JPG, and an image
+    converter to make them compatible with the display.
+  </p>
+
+  <p>
+    But having the image show up and disappear in pieces didn’t provide the
+    morphing effect I was looking for, so I transitioned to SVG files.
   </p>
 
   <div class="image-row">
-    old-morph.jpg
-    <img src="point-cloud-morph.jpg" alt="Final used the same photo outline tool, saving as SVG instead...
+    <div class="image-placeholder">
+      Original Transition Attempt
+    </div>
+
+    <div class="image-placeholder">
+      Point-Cloud Morphing
+    </div>
+  </div>
+
+  <p>
+    I used the same photo outline tool, saving as an SVG instead. Then a
+    Python script, <strong>svg_to_points</strong>, samples points along SVG
+    paths and converts them into lists of coordinates that can be displayed on
+    the screen.
   </p>
 
   <p>
-    I then made subtle refinements so that the final mascot would fade...
-  </p>
-
-  <h2>Challenges</h2>
-
-  <ul>
-    <li>Getting mascot outlines to fit the screen</li>
-    <li>Making morphs feel smooth rather than chaotic</li>
-    <li>Aligning the selection screen animation</li>
-    <li>Managing memory constraints on the TTGO display</li>
-  </ul>
-
-  <h2>Try It Yourself</h2>
-
-  <p>
-    <a href="https://github.com/Victoria3452/next-adventure">
-      View the GitHub Repository
-    </a>
-  </p>
-
-  <p>
-    index.html← Back to Portfolio</a>
-  </p>
-
-</div>
-
-</body>
-</html>
+    Converting the mascots into point clouds allowed each point to be mapped
+    from one image to another. Rather than 
