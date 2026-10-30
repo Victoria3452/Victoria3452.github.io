@@ -211,6 +211,30 @@
     and adding the informational cards made less sense at that point.
   </p>
 
+  <p>
+    I wanted the jar to look like a translucent, classic mason jar with its lid
+    facing upward. I also experimented with how the lid would respond to the
+    player's actions. I had originally planned to open the lid with a button
+    press, but decided to have it swing open automatically when a firefly comes
+    within range of the jar and close when the player presses the catch button.
+    This made the catching interaction feel more responsive to the firefly's
+    movement.
+  </p>
+  
+  <p>
+    I also wanted the menus to work entirely with the physical controller.
+    I added a visual highlight to the selected option so players could toggle
+    between options using the joystick and select one with the button press.
+  </p>
+  
+  <p>
+    For the release animation, I wanted to maintain a visual connection between
+    the catching and releasing mechanics. Instead of having the caught fireflies
+    disappear and reappear, I introduced small glowing dots that move around
+    inside the jar. During the release animation, these glows turn back into
+    fireflies one at a time and fly away.
+  </p>
+
   <!-- <div class="image-row">
     <img src ="quote_screen.jpeg">
 
@@ -224,10 +248,45 @@
   <p>
     I created a keyboard version of the game in Processing with the ChatGPT Free Tier (GPT-5.6 Luna)
     and then added the physical input controls to the Processing script manually.
-    
-    Example Prompts:
-
   </p>
+
+  <h3>Example Prompts</h3>
+
+  <p>
+    I used ChatGPT iteratively throughout development, providing specific
+    instructions and screenshots to refine the appearance and behavior of
+    individual elements. Some examples include:
+  </p>
+  
+  <p><strong>Visual design:</strong></p>
+  
+  <blockquote>
+    I want the fireflies to be blue, yellow-green, and a brighter green,
+    make them feel like glowing dots, a cursive font for the title,
+    remove the tagline.
+  </blockquote>
+  
+  <p><strong>Initial gameplay mechanics:</strong></p>
+  
+  <blockquote>
+    Now I'd like to work on the gameplay screen. To start I want a randomly
+    flying firefly and a jar that can be controlled by a joystick.
+  </blockquote>
+  
+  <p><strong>Refining the catching mechanics:</strong></p>
+  
+  <blockquote>
+    How do I update the logic so points are only scored / firefly is only
+    caught if the firefly is inside the shape of the jar?
+  </blockquote>
+  
+  <p><strong>Release animation:</strong></p>
+  
+  <blockquote>
+    I want the release animation to start with the jar glows and one at a
+    time the glows turn back into the fireflies as they fly away just so
+    the visual language stays consistent.
+  </blockquote>
   
   <h3>Reading Physical Inputs</h3>
   
