@@ -207,7 +207,97 @@
     <img src="dragon.jpeg">
   </div> -->
 
+  ```html
   <h2>Technical Implementation</h2>
+  
+  <p>
+    I created a keyboard version of the game in Processing with the ChatGPT Free Tier
+    and then added the physical input controls to the Processing script manually.
+    I used ChatGPT to help iterate on the user interface and gameplay mechanics.
+  </p>
+  
+  <h3>Reading Physical Inputs</h3>
+  
+  <p>
+    I modified the joystick example code we were provided with so that all of the
+    physical inputs were included and could be printed on a single line. This allowed
+    me to monitor the joystick's X and Y positions, joystick button, potentiometer,
+    and catch button together while testing the hardware.
+  </p>
+  
+  <h3>Updating Jar Movement</h3>
+  
+  <p>
+    Initially, the code mapped the potentiometer's analog reading (0–4095) to a
+    joystickSmoothness value, which was used in lerp() to control how quickly the
+    jar approached the joystick's target position. I changed this to map the
+    reading to moveSpeed (4–24 pixels per frame), making the joystick control
+    directional movement instead of target positioning.
+  </p>
+  
+  <p>
+    Later, I introduced a jarScale variable, mapping the potentiometer reading
+    to a scale of 1.0–2.0. This value was applied to the jar's dimensions and
+    incorporated into the scoring calculation (pointsForSmallJar / jarScale),
+    rewarding players for using a smaller jar.
+  </p>
+  
+  <h3>Fixing Unintended Catch Attempts Between Rounds</h3>
+  
+  <p>
+    Originally, the code was simply:
+  </p>
+  
+  <div class="center-image">
+    <img src="chasing_fireflies/attemptcatchoriginal.jpg"
+         alt="Original catch button logic">
+  </div>
+  
+  <p>
+    The issue was that after a firefly was caught, a new round would start, but
+    the momentary switch would still equal 0 (registered as pressed). Even though
+    the user did not press the button again during the new round, the game would
+    register another catch attempt. If the new firefly was outside the jar's
+    catch range, this could cause the game to end unexpectedly.
+  </p>
+  
+  <p>
+    To fix this, I added the catchTime variable to track when the last catch
+    attempt occurred. Before allowing another catch attempt, the game checks
+    how much time has passed since the previous one. This prevents the button
+    from triggering another catch immediately when a new round starts and gives
+    the player time to release and press the button again.
+  </p>
+  
+  <p><strong>Working Implementation:</strong></p>
+  
+  <div class="center-image">
+    <img src="chasing_fireflies/attemptcatchworking.jpg"
+         alt="Updated catch button logic">
+  </div>
+  
+  <h3>Fixing Leaderboard Logic</h3>
+  
+  <p>
+    Originally, the game could display "New High Score!" simply because the score
+    qualified for the leaderboard, even if it wasn't higher than the previous
+    record. I changed the logic to distinguish between three possible outcomes:
+  </p>
+  
+  <ul>
+    <li><strong>New High Score:</strong> Displayed only when the player's score exceeds the previous highest score.</li>
+    <li><strong>You Made the Leaderboard!:</strong> Displayed when the score qualifies for the leaderboard but does not beat the previous record.</li>
+    <li><strong>Final Score:</strong> Displayed when the score does not qualify for either achievement.</li>
+  </ul>
+  
+  <p>
+    The game also tracks the new entry's rank separately so it can highlight the
+    correct score on the leaderboard. This makes the end-screen message accurately
+    reflect what the player actually achieved.
+  </p>
+
+
+  <!-- <h2>Technical Implementation</h2>
 
   <p>
     I created a keyboard version of the game in Processing with the ChatGPT Free Tier (GPT-5.6 Luna)
@@ -235,12 +325,8 @@
     To solve this, I added a time check between button presses so a button press would only be registered as a catch if 2 seconds had passed.
     I added a new variable (), checked that 2 seconds had passed between the last catch and the current catch, and then updated the last catch variable to be the time of the current catch.
 
-  </p>
+  </p> -->
 
-  <p>
-    But having the image show up and disappear in pieces didn’t provide the
-    morphing effect I was looking for, so I transitioned to SVG files.
-  </p>
 
   <!-- <div class="image-row">
     <div class="image-placeholder">
