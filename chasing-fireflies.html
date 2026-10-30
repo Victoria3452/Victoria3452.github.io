@@ -211,7 +211,7 @@
   <p>
     This project was inspired by catching fireflies and a particular 
     reference that stood out when creating the feel of the game was a 
-    lyric video for the Broadway show Maybe Happy Ending.
+    music video for the Broadway show Maybe Happy Ending.
   </p>
 
   <div class="center-image">
@@ -356,14 +356,35 @@
     and catch button together while testing the hardware.
   </p>
   
-  <h3>Updating Jar Movement</h3>
+  <h3>Updating Jar Size and Joystick Controls</h3>
   
   <p>
-    Initially, the code mapped the potentiometer's analog reading (0–4095) to a
-    joystickSmoothness value, which was used in lerp() to control how quickly the
-    jar approached the joystick's target position. I changed this to map the
-    reading to moveSpeed (4–24 pixels per frame), making the joystick control
-    directional movement instead of target positioning.
+    My original idea was to use the potentiometer to control the jar's catch radius, 
+    potentially visualized as a glowing force field around the jar. However, I decided
+    to change the actual size of the jar instead. I thought this would make the catching 
+    boundary easier to understand because players could use the visible outline of the jar 
+    to judge whether a firefly was within range. 
+  </p>
+
+  <p>
+    I mapped the potentiometer's analog reading (0–4095) to a jarScale value 
+    between 1.0 and 2.0. This value affected the jar's dimensions and the scoring 
+    calculation (pointsForSmallJar / jarScale), rewarding players for using a smaller jar.
+  </p>
+
+  <p>
+    Separately, I experimented with improving how the joystick controlled the jar's position. 
+    Initially, the jar moved toward a target position using lerp(), with movement smoothness 
+    controlled by a static joystickSmoothness variable. I found that this fixed value didn't 
+    produce a satisfying playing experience, so I experimented with mapping the potentiometer 
+    to joystickSmoothness. My intention was to create an adjustable difficulty scale where a 
+    larger jar would be easier to control, but this didn't produce the results I wanted.
+  </p>
+
+   <p>
+    I eventually changed the joystick interaction from target-based positioning to direct directional movement. 
+    Instead of moving toward a target position, the jar moved in the direction the joystick was pushed. I then 
+    mapped the potentiometer to moveSpeed (4–24 pixels per frame), allowing players to adjust how quickly the jar moved.
   </p>
 
   <div class="image-row">
@@ -375,10 +396,10 @@
   </div>
   
   <p>
-    Later, I introduced a jarScale variable, mapping the potentiometer reading
-    to a scale of 1.0–2.0. This value was applied to the jar's dimensions and
-    incorporated into the scoring calculation (pointsForSmallJar / jarScale),
-    rewarding players for using a smaller jar.
+    This created a more meaningful gameplay trade-off: larger jars could move faster, 
+    making them useful for catching faster-moving fireflies, while smaller jars were more
+    challenging to use but rewarded players with more points.
+
   </p>
   
   <h3>Fixing Unintended Catch Attempts Between Rounds</h3>
