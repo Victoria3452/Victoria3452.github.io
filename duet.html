@@ -257,39 +257,50 @@
   <h3>Displaying Immediate Feedback</h3>
 
   <p>
-    
+    To implement individual player feedback, I added two arrays in Processing to track each player's most recent judgment and how long it should stay on the screen.
   </p>
 
   <div class="center-image">
     <img src="duet/Duet-feedback-0.png">
   </div>
 
-  <p>
-    
-  </p>
+  
 
   <div class="center-image">
     <img src="duet/Duet-feedback.png">
   </div>
+  <p>
+    The feedback array stores a numerical code for each player's judgment, while feedbackUntil stores the time when that feedback should expire. Using millis(), the message disappears automatically after 650 milliseconds without interrupting the game's main loop. Keeping separate values for each player also prevents one player's input from overwriting the other player's feedback.
+
+  </p>
 
   <p>
-    
+    The next step was incorporating this information into the existing communication protocol. In sendFrames(), Processing sends a frame update to each player every 40 milliseconds. I extended the frame header from four values to five, adding the player's active feedback code:
   </p>
+
+ 
 
   <div class="center-image">
     <img src="duet/Duet-feedback-2.png">
   </div>
 
-  <p>
-    
-  </p>
+   <p>
+    The feedback was transmitted alongside the existing game state, combined score, accuracy, and countdown, rather than requiring a separate message. The player ID in the frame determines which board receives the corresponding feedback.
+
+    </p>
+
+    <p>
+    In the Arduino code, I updated the frame parser to read five header values instead of four:
+    </p>
+
+
   
   <div class="center-image">
     <img src="duet/Duet-feedback-3-2.png">
   </div>
 
   <p>
-    
+     The fifth value is then used to select the appropriate message and color for the display:
   </p>
   
   <div class="center-image">
@@ -297,7 +308,7 @@
   </div>
 
   <p>
-    
+    This implementation keeps the responsibilities of the two systems separate: Processing determines the judgment and how long it remains active, while the ESP32 interprets the numerical code and renders the corresponding text and color. By extending the existing frame protocol, I was able to add individual feedback without creating a separate communication system.
   </p>
   
   <h3>AI Support</h3>
