@@ -243,22 +243,11 @@
 
   <p>
     This portion of the code is crucial to our design: 
-int t = millis() - startAt - INPUT_OFFSET_MS[p];
-
-Note best = null;
-int distance = GOOD + 1;
-
-for (Note n : notes) {
-  if (!n.judged &&
-      n.player == p &&
-      n.lane == lane &&
-      abs(n.time - t) < distance) {
-    distance = abs(n.time - t);
-    best = n;
-  }
-}
-
   </p>
+  
+  <div class="center-image">
+    <img src="duet/Duet-code.png">
+  </div>
 
   <p>This code matches each button press to the closest eligible tile by first calculating the current time relative to the start of the song (Twinkle Twinkle Little Star) and then searches for available tiles (same lane, correct player). When a tile is pressed its time is compared with the tile’s scheduled time in the song. This logic is the backbone of what allows two people to create a song that requires so much synchronization and timing.</p>
   <p>Players’ end goal is a high combined accuracy, which is calculated by combined earned weight ÷ maximum weight for judged tiles × 100.</p>
