@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Duet</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Quicksand:wght@500;600;700&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background-color: #EEF4EC;
+      background-image: url('https://www.transparenttextures.com/patterns/paper-fibers.png');
+      margin: 0;
+      padding: 60px 40px 100px;
+      color: #355944;
+    }
+
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 3em;
+      color: #3F6B4A;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      font-family: 'Quicksand', sans-serif;
+      color: #3F6B4A;
+      margin-top: 60px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      line-height: 1.9;
+      font-size: 1.08em;
+    }
+
+    a {
+      color: #3F6B4A;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 40px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    .video-placeholder,
+    .image-placeholder {
+      background: rgba(255,255,255,0.5);
+      border: 2px dashed #9DB39C;
+      border-radius: 16px;
+      padding: 40px;
+      text-align: center;
+      margin: 25px 0;
+      color: #6F9478;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      margin: 25px 0;
+    }
+    
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* .image-row {
+      display: flex;
+      gap: 20px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+
+    .image-row img,
+    .image-row video{
+      flex: 1;
+      min-width: 220px;
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    } */
+    
+    .image-row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+    
+    .image-row img,
+    .image-row video {
+      width: 500px;
+      height: auto;
+      max-height: 460px;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .center-image {
+      text-align: center;
+      margin: 25px 0;
+    }
+    
+    .center-image img {
+      max-width: 350px;
+    }
+
+    blockquote {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.3em;
+      color: #3F6B4A;
+      border-left: 4px solid #9B8FB5;
+      padding-left: 20px;
+      margin: 30px 0;
+    }
+
+    ul {
+      line-height: 2;
+    }
+
+    .repo-link {
+      background: rgba(255,255,255,0.5);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 15px;
+    }
+
+    img {
+      max-width: 100%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="content">
+
+  <a href="index.html" class = "back-link">← Back to Portfolio</a>
+
+  <h1>Chasing Fireflies</h1>
+
+  <p>
+    An interactive Processing game where players catch glowing fireflies 
+    using a joystick, button, and potentiometer with custom animations, 
+    progressive difficulty, and a persistent leaderboard.
+  </p>
+
+  <h2>Video</h2>
+
+  <!-- <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/4JUIxUYemsc"
+      title="Chasing Fireflies Demo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div> -->
+
+  <div class="video-container">
+    <iframe
+      src="https://www.youtube.com/embed/7HgCSRs0Akk?autoplay=1&mute=1&playsinline=1"
+      title="Chasing Fireflies Demo"
+      frameborder="0"
+      allow="autoplay; accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <h2>Artistic Vision</h2>
+
+  <p>
+    We wanted to make a game where players could work together to make/do something 
+    creative! We decided to make a rhythm game inspired by the game Piano Tiles, where 
+    players have to tap tiles as they come down the screen in order to play the note. 
+    Although it’s typically a one-person game, we envisioned a new two-person version 
+    where the notes were split up and the players could work towards a shared accuracy 
+    score. We picked Twinkle Twinkle Star as our song because it’s a classic, recognizable, 
+    and can easily be divided into balanced notes for each player to play.
+  </p>
+
+  <div class="center-image">
+    <img src="chasing_fireflies/MHE_fireflies.png">
+  </div>
+
+  <h2>Our Roles & Design Decisions</h2>
+
+  <p>
+   Julia’s primary responsibilities were organizing the Twinkle Twinkle 
+    MIDI notes into playable tiles, splitting them, and working through the 
+    tile display and other user experience enhancements like replaying, countdown, etc. 
+  </p>
+
+  <p>My primary responsibilities involved implementing combined accuracy and 
+    feedback messages, including matching button presses to tiles to improve the user experience. 
+  </p>
+
+  <p>We worked together in-person the entire creation process to brainstorm together, 
+    connect the boards through Processing, troubleshoot issues, and playtest the game together to improve its timing and interface. 
+  </p>
+
+  <div class="center-image">
+    <img src="chasing_fireflies/MHE_fireflies.png">
+  </div>
+
+  <p>As for design decisions, we changed the screens from landscape to portrait so 
+    it would be easier for players to see the tiles coming down the screen, and also
+    makes more sense with how the buttons on the ESP32 are oriented. Also, we simplified 
+    the interface over every iteration as we would play it. We originally had more information 
+    on the screen during gameplay, but after playing we realized we’d like it more if there were
+    less information at the top. As players, we watched the tiles move more often than looking up
+    to see what our accuracy was so we focused on getting the top part of the screen less cluttered. 
+    Additionally, while playing, we figured it would be more helpful if during the game, users could 
+    see when they had a perfect press, a good, a miss, or a stray, so they could improve their accuracy. 
+    Overall, our design decisions really took shape the more that we tested our game. 
+</p>
+  
+  <h2>Technical Implementation</h2>
+  
+  <p>
+    We built on the lab in class that synced the ESP32s. We kept the code that 
+    worked with team and player IDs and its wireless broadcast structure. Our game 
+    utilizes Processing, which reads MIDI, assigns tiles, manages song timing, judges 
+    presses, calculates accuracy, and generates instrument sounds. The first ESP32 board 
+    displays player one’s tiles and is the USB bridge between Processing and the wireless 
+    network. The other ESP32 receives display updates and sends button events. The boards render 
+    their own graphics and send tile positions often to manage song synchronization.
+  </p>
+
+  <p>
+    This portion of the code is crucial to our design: 
+int t = millis() - startAt - INPUT_OFFSET_MS[p];
+
+Note best = null;
+int distance = GOOD + 1;
+
+for (Note n : notes) {
+  if (!n.judged &&
+      n.player == p &&
+      n.lane == lane &&
+      abs(n.time - t) < distance) {
+    distance = abs(n.time - t);
+    best = n;
+  }
+}
+
+  </p>
+
+  <p>This code matches each button press to the closest eligible tile by first calculating the current time relative to the start of the song (Twinkle Twinkle Little Star) and then searches for available tiles (same lane, correct player). When a tile is pressed its time is compared with the tile’s scheduled time in the song. This logic is the backbone of what allows two people to create a song that requires so much synchronization and timing.</p>
+  <p>Players’ end goal is a high combined accuracy, which is calculated by combined earned weight ÷ maximum weight for judged tiles × 100.</p>
+  <p>A challenge was adapting the Twinkle Twinkle MIDI arrangement to four buttons total. The file we found online has 216 pitched notes, some of which are simultaneous, so we utilized ChatGPT to help us clean up some tiles, changing the separate notes into group notes that had the same start times. It helped create playable tiles while retaining the correct notes.</p>
+  <p>Additionally, our game depends heavily on presses not sending twice or getting mixed up. Each press has a sequence number and is retried until acknowledged. Processing will ignore repeated IDs so different presses cannot count multiple times. However even with these efforts to help presses and song notes happen at the right times, there are many small delays that can probably affect the user experience.</p>
+  
+
+  <h3>AI Support</h3>
+
+  <p>
+   We used OpenAI ChatGPT-6 Astra for technical explanations, code development, debugging, and interface revisions.
+Examples of prompts we used include:
+  </p>
+  
+  <p><strong>Visual design:</strong></p>
+  
+  <blockquote>
+    Create a minimal synchronization test for two ESP32 boards using the course’s ESP-NOW base architecture code and a Processing sketch over USB serial.
+
+  </blockquote>
+  
+  <p><strong>Initial gameplay mechanics:</strong></p>
+  
+  <blockquote>
+    Change the song to twinkle twinkle little star and change the orientation so that it’s aligned with the buttons. Also, show a combined accuracy score instead of individual ones.
+  </blockquote>
+  
+  <p><strong>Refining the catching mechanics:</strong></p>
+  
+  <blockquote>
+    Accuracy should be centered on top, not score.
+  </blockquote>
+  
+  <h3>Reading Physical Inputs</h3>
+  
+  <p>
+    The AI helped generate Arduino and Processing code, and implement any visual feedback we provided.
+  </p>
+  <p>Our own work included testing the game on both ESP32 boards and deciding how to improve the experience based on our playtests. We chose a portrait layout to align the tiles with the buttons, simplified the screen to show only combined accuracy, and requested brief feedback for Perfect, Good, Miss, and Stray presses. We also selected the song and customized the end-screen messages. Testing the AI-generated code on the physical boards helped us evaluate whether the controls, visuals, and sound worked together as intended.
+  </p>
+  
+ 
+  
+  <h2>Try It Yourself</h2>
+  
+  <p>
+    <a href="https://github.com/Victoria3452/duet" target="_blank">
+      View the GitHub Repository
+    </a>
+  </p>
+  
